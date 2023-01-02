@@ -4,21 +4,27 @@ using namespace std;
 class NavarroGameEngine
 {
 protected:
-	string version;
+	string* version;
 
 public:
 	NavarroGameEngine();
+	~NavarroGameEngine();
 	string GetVersion();
 };
 
 NavarroGameEngine::NavarroGameEngine()
 {
-	version = "0.0";
+	version = new string("0.0");
+}
+
+NavarroGameEngine::~NavarroGameEngine()
+{
+	delete version;
 }
 
 string NavarroGameEngine::GetVersion() 
 {
-	return this->version;
+	return *(this->version);
 }
 
 int main(string param[])
